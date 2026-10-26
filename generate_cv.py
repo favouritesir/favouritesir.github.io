@@ -369,7 +369,7 @@ CV_HTML = f"""<!DOCTYPE html>
           </div>
           <div class="item-meta">Conceived at Dept. of CSE, Green University of Bangladesh &bull; Published Oct 2026</div>
           <p class="item-desc">
-            Invented an asymmetric in-situ merge sort reducing auxiliary space to &lceil;N/2&rceil; elements with zero dynamic heap allocations (<code>malloc</code>/<code>free</code>). Proved inductive read-before-write safety (<i>wp<sub>t</sub> &le; rp<sub>t</sub></i>) and formulated the <strong>Zero-Move Right Tail Property</strong>, eliminating 25.0% of physical SRAM data bus writes. Verified across 10,000 differential random array trials against V8 TimSort and micro-benchmarked on ATmega328P.
+            Invented an asymmetric in-situ merge sort reducing auxiliary space to &lceil;N/2&rceil; elements with zero dynamic heap allocations (<code>malloc</code>/<code>free</code>). Proved inductive read-before-write safety (<i>wp<sub>t</sub> &le; rp<sub>t</sub></i>) and formulated the <strong>Zero-Move Right Tail Property</strong>, eliminating 25.0% of physical SRAM data bus writes. Audited against QuickSort, Standard Merge, and TimSort: achieves 10%–67% faster throughput than textbook merge with 0% extra key comparisons. Verified across 10,000 differential random array trials and micro-benchmarked on ATmega328P.
           </p>
         </div>
 
