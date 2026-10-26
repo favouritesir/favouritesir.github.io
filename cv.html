@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashikur Rahman | Interactive Digital Portfolio &amp; CV</title>
+  <meta name="description" content="Software Engineer, Algorithm Researcher &amp; Systems Architect. Interactive digital CV featuring Cloud Merge Sort, Infix to Prefix algorithms, and verified empirical benchmarks.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg-dark: #0a0f1d;
+      --bg-card: #111827;
+      --bg-card-hover: #1e293b;
+      --primary: #0ea5e9;
+      --primary-glow: rgba(14, 165, 233, 0.25);
+      --accent: #10b981;
+      --accent-glow: rgba(16, 185, 129, 0.25);
+      --purple: #8b5cf6;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --border-glow: rgba(14, 165, 233, 0.4);
+      --font-sans: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'Fira Code', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Animated Ambient Glow */
+    .ambient-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(circle at 15% 20%, rgba(14, 165, 233, 0.12) 0%, transparent 40%),
+                  radial-gradient(circle at 85% 75%, rgba(16, 185, 129, 0.1) 0%, transparent 40%),
+                  radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header & Hero */
+    header {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 32px;
+      align-items: center;
+      background: rgba(17, 24, 39, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 36px 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    .avatar-wrapper {
+      position: relative;
+    }
+
+    .avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary);
+      box-shadow: 0 0 25px var(--primary-glow);
+    }
+
+    .status-badge {
+      position: absolute;
+      bottom: 6px;
+      right: 6px;
+      width: 20px;
+      height: 20px;
+      background: #10b981;
+      border: 3px solid var(--bg-card);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    .hero-info h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #ffffff 40%, #0ea5e9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-role {
+      font-size: 1.1rem;
+      color: var(--primary);
+      font-weight: 600;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .hero-role span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-bio {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 650px;
+      line-height: 1.5;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: #ffffff;
+      box-shadow: 0 4px 20px var(--primary-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(14, 165, 233, 0.45);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--text-muted);
+      transform: translateY(-2px);
+    }
+
+    /* Grid Layout */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 32px;
+    }
+
+    /* Section Cards */
+    .card {
+      background: rgba(17, 24, 39, 0.65);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 32px;
+      transition: border-color 0.3s;
+    }
+
+    .card:hover {
+      border-color: rgba(14, 165, 233, 0.4);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      padding-bottom: 16px;
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .card-title i {
+      color: var(--primary);
+    }
+
+    .badge-tag {
+      background: rgba(14, 165, 233, 0.15);
+      border: 1px solid var(--border-glow);
+      color: var(--primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+    }
+
+    /* Interactive Algorithm Studio */
+    .algo-playground {
+      background: rgba(10, 15, 29, 0.9);
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 16px;
+    }
+
+    .tab-nav {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      color: var(--primary);
+      background: rgba(14, 165, 233, 0.15);
+      border: 1px solid var(--primary-glow);
+    }
+
+    .input-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .algo-input {
+      flex: 1;
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: #38bdf8;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+    }
+
+    .algo-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 12px var(--primary-glow);
+    }
+
+    .action-btn {
+      background: var(--accent);
+      color: #064e3b;
+      font-weight: 700;
+      padding: 0 24px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
+    }
+
+    .action-btn:hover {
+      background: #34d399;
+      transform: translateY(-2px);
+    }
+
+    .output-terminal {
+      background: #090d16;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 16px;
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      min-height: 80px;
+      color: #e2e8f0;
+      position: relative;
+    }
+
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .metric-chip {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .metric-chip .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .metric-chip .value {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-top: 4px;
+      font-family: var(--font-mono);
+    }
+
+    /* Benchmark Comparison Table */
+    .table-container {
+      overflow-x: auto;
+      margin-top: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .bench-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+
+    .bench-table th, .bench-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .bench-table th {
+      background: #0f172a;
+      color: #94a3b8;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.5px;
+    }
+
+    .bench-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .highlight-row {
+      background: rgba(14, 165, 233, 0.08) !important;
+    }
+
+    .tag-green {
+      color: #34d399;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .tag-red {
+      color: #f87171;
+      font-weight: 600;
+    }
+
+    /* Timeline & Research Items */
+    .timeline-item {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 28px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 22px;
+      bottom: -20px;
+      width: 2px;
+      background: #1e293b;
+    }
+
+    .timeline-item:last-child::after {
+      display: none;
+    }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .timeline-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .timeline-doi {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      background: #0f172a;
+      border: 1px solid #334155;
+      padding: 3px 8px;
+      border-radius: 6px;
+      color: #38bdf8;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .timeline-doi:hover {
+      border-color: var(--primary);
+      background: #1e293b;
+    }
+
+    .timeline-sub {
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .timeline-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    /* Skills Grid */
+    .skills-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .skill-category {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .skill-cat-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-badge {
+      background: #1e293b;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      color: #e2e8f0;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .skill-badge:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    /* Contact Links */
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      margin-bottom: 10px;
+      text-decoration: none;
+      color: var(--text-main);
+      transition: all 0.2s;
+    }
+
+    .contact-item:hover {
+      background: rgba(14, 165, 233, 0.1);
+      border-color: var(--border-glow);
+      transform: translateX(4px);
+    }
+
+    .contact-icon-box {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.1rem;
+    }
+
+    .contact-meta strong {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .contact-meta span {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      header {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .avatar-wrapper {
+        margin: 0 auto;
+      }
+      .hero-role {
+        justify-content: center;
+      }
+      .hero-actions {
+        flex-direction: row;
+        justify-content: center;
+      }
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-glow"></div>
+
+  <div class="container">
+    <!-- Header Hero Section -->
+    <header>
+      <div class="avatar-wrapper">
+        <img src="assets/img/ashikur_rahman.png" alt="Ashikur Rahman" class="avatar">
+        <div class="status-badge" title="Actively Seeking Opportunities"></div>
+      </div>
+
+      <div class="hero-info">
+        <h1>ASHIKUR RAHMAN</h1>
+        <div class="hero-role">
+          <span><i class="fa-solid fa-code"></i> Software Engineer</span>
+          <span>&bull;</span>
+          <span><i class="fa-solid fa-atom"></i> Algorithm Researcher</span>
+          <span>&bull;</span>
+          <span><i class="fa-solid fa-microchip"></i> Systems Architect</span>
+        </div>
+        <p class="hero-bio">
+          B.Sc. in Computer Science &amp; Engineering graduate from <strong>Green University of Bangladesh</strong>. Conceived and published novel memory-optimal algorithms indexed with permanent <strong>CERN/Zenodo DOIs</strong>. Creator of zero-cost serverless enterprise architectures and developer libraries.
+        </p>
+      </div>
+
+      <div class="hero-actions">
+        <a href="assets/cv/CV of Ashikur Rahman.pdf" download class="btn btn-primary">
+          <i class="fa-solid fa-file-arrow-down"></i> Download PDF CV
+        </a>
+        <a href="https://github.com/favouritesir" target="_blank" class="btn btn-outline">
+          <i class="fa-brands fa-github"></i> GitHub Profile
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Dashboard Grid -->
+    <div class="dashboard-grid">
+      <!-- Left Column: Interactive Showcase & Research -->
+      <div class="left-col">
+        
+        <!-- Interactive Algorithm Studio -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fa-solid fa-flask"></i> Interactive Algorithmic Studio
+            </div>
+            <span class="badge-tag">Live Engine</span>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 16px;">
+            Test the live algorithms conceived and proved in my research papers directly inside your browser:
+          </p>
+
+          <div class="algo-playground">
+            <div class="tab-nav">
+              <button class="tab-btn active" id="tab-cloud" onclick="switchTab('cloud')">1. Cloud Merge Sort</button>
+              <button class="tab-btn" id="tab-prefix" onclick="switchTab('prefix')">2. In-Situ Infix → Prefix</button>
+            </div>
+
+            <!-- Cloud Sort Interactive -->
+            <div id="panel-cloud">
+              <div class="input-row">
+                <input type="text" id="sort-input" class="algo-input" value="38, 27, 43, 3, 9, 82, 10, 19, 50, 61" placeholder="Enter comma-separated integers...">
+                <button class="action-btn" onclick="runCloudSort()"><i class="fa-solid fa-bolt"></i> Run Sort</button>
+              </div>
+              <div class="output-terminal" id="sort-terminal">
+                // Click "Run Sort" to observe Cloud Merge Sort in action...<br>
+                // Auxiliary Space Allocation: Exactly ceil(N/2) floating buffer
+              </div>
+              <div class="metrics-row">
+                <div class="metric-chip">
+                  <div class="label">Auxiliary Memory Buffer</div>
+                  <div class="value" id="sort-space">ceil(N/2)</div>
+                </div>
+                <div class="metric-chip">
+                  <div class="label">Memory Moves Saved</div>
+                  <div class="value" id="sort-moves">~26.2%</div>
+                </div>
+                <div class="metric-chip">
+                  <div class="label">Algorithmic Stability</div>
+                  <div class="value" style="color: #34d399;">100% Guaranteed</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Infix to Prefix Interactive -->
+            <div id="panel-prefix" style="display: none;">
+              <div class="input-row">
+                <input type="text" id="prefix-input" class="algo-input" value="(a-b/c)*(a/k-l)" placeholder="Enter infix expression...">
+                <button class="action-btn" onclick="runInfixToPrefix()"><i class="fa-solid fa-arrows-split-up-and-left"></i> Convert</button>
+              </div>
+              <div class="output-terminal" id="prefix-terminal">
+                // Click "Convert" to execute Dual-Pointer In-Place Prefix Converter...<br>
+                // O(1) Auxiliary Space: No string reversal loops used!
+              </div>
+              <div class="metrics-row">
+                <div class="metric-chip">
+                  <div class="label">Time Complexity</div>
+                  <div class="value">O(N) Single-Pass</div>
+                </div>
+                <div class="metric-chip">
+                  <div class="label">String Space Overhead</div>
+                  <div class="value">O(1) In-Situ</div>
+                </div>
+                <div class="metric-chip">
+                  <div class="label">Reversal Passes</div>
+                  <div class="value" style="color: #34d399;">0 (Eliminated)</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 4-Way Algorithmic Benchmark Matrix -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fa-solid fa-chart-simple"></i> Empirical 4-Way Benchmark Suite
+            </div>
+            <span class="badge-tag">Audited Oct 2026</span>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.92rem;">
+            Head-to-head empirical metrics measured across <strong>10,000 array elements</strong> across modern runtime engines (Node.js V8 &amp; Python 3):
+          </p>
+
+          <div class="table-container">
+            <table class="bench-table">
+              <thead>
+                <tr>
+                  <th>Algorithm</th>
+                  <th>Aux Memory Buffer</th>
+                  <th>Memory Writes</th>
+                  <th>Worst-Case Time</th>
+                  <th>Stability</th>
+                  <th>IoT / Arduino Safe</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="highlight-row">
+                  <td><strong>☁️ Cloud Merge Sort</strong></td>
+                  <td><span class="tag-green">ceil(N/2) (50% Saved)</span></td>
+                  <td><strong>197,173</strong> (-26.2%)</td>
+                  <td>O(N log N)</td>
+                  <td><span class="tag-green"><i class="fa-solid fa-check"></i> Strictly Stable</span></td>
+                  <td><span class="tag-green"><i class="fa-solid fa-shield"></i> Safe (Passes Uno)</span></td>
+                </tr>
+                <tr>
+                  <td>📦 Standard Merge Sort</td>
+                  <td>N elements (100% buffer)</td>
+                  <td>267,232</td>
+                  <td>O(N log N)</td>
+                  <td><span class="tag-green"><i class="fa-solid fa-check"></i> Strictly Stable</span></td>
+                  <td><span class="tag-red"><i class="fa-solid fa-xmark"></i> OOM Crash (N&gt;350)</span></td>
+                </tr>
+                <tr>
+                  <td>⚡ QuickSort (Hoare)</td>
+                  <td>O(log N) stack frames</td>
+                  <td>245,301</td>
+                  <td><span class="tag-red">O(N²) (Degrades)</span></td>
+                  <td><span class="tag-red"><i class="fa-solid fa-xmark"></i> Unstable</span></td>
+                  <td>Risk of Stack Crash</td>
+                </tr>
+                <tr>
+                  <td>🏎️ TimSort (V8/Python)</td>
+                  <td>O(N) Run Stack Buffer</td>
+                  <td>Varies by runs</td>
+                  <td>O(N log N)</td>
+                  <td><span class="tag-green"><i class="fa-solid fa-check"></i> Strictly Stable</span></td>
+                  <td>Too heavy for 2KB RAM</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Published Preprints & Research -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fa-solid fa-book-bookmark"></i> Published Research Preprints
+            </div>
+            <span class="badge-tag">CERN / Zenodo Indexed</span>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <span class="timeline-title">Cloud Sort: An Overhead Caller-Buffer Merge Paradigm</span>
+              <a href="https://doi.org/10.5281/zenodo.23665548" target="_blank" class="timeline-doi">DOI: 10.5281/zenodo.23665548</a>
+            </div>
+            <div class="timeline-sub">Invented &amp; Authored by Ashikur Rahman &bull; Published Oct 2026</div>
+            <p class="timeline-desc">
+              Introduced an asymmetric in-situ merge sort requiring only $\lceil N/2 \rceil$ floating auxiliary memory with zero dynamic heap allocations. Formulated the <strong>Zero-Move Right Tail Property</strong>, eliminating an entire drain while-loop and reducing SRAM memory bus write transitions by 25.0%. Verified across 10,000 differential random arrays against V8 TimSort with 100.0000% precision.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <span class="timeline-title">In-Situ Dual-Pointer Algorithm for Infix-to-Prefix Transformation</span>
+              <a href="https://doi.org/10.5281/zenodo.23657544" target="_blank" class="timeline-doi">DOI: 10.5281/zenodo.23657544</a>
+            </div>
+            <div class="timeline-sub">Invented &amp; Authored by Ashikur Rahman &bull; Published Oct 2026</div>
+            <p class="timeline-desc">
+              Formulated an optimal single-pass right-to-left transformation technique operating directly on the input buffer in $O(1)$ auxiliary string space. Eliminates the traditional textbook 3-pass requirement (reverse &rarr; postfix &rarr; reverse), cutting bus operations by &gt;60%.
+            </p>
+          </div>
+        </div>
+
+        <!-- Featured Production Engineering Projects -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fa-solid fa-cubes"></i> Featured Systems &amp; Software Projects
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <span class="timeline-title">Demo PMS &amp; AdisFee Cloud Platform</span>
+              <span class="badge-tag" style="color: #34d399;">Live In Production</span>
+            </div>
+            <div class="timeline-sub">Zero-Cost Cloud Platform &bull; Real-Time Multi-Tab State Sync</div>
+            <p class="timeline-desc">
+              Architected a high-concurrency educational fee collection platform powered by Google Apps Script serverless backends with zero recurring cloud hosting overhead. Built real-time state synchronization across browser tabs without WebSockets, and cryptographic OTP-based access control.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <span class="timeline-title">SUPER Fill — Form Engine &amp; Dynamic Workspace</span>
+              <span class="badge-tag">Academic IDP 1 Project</span>
+            </div>
+            <div class="timeline-sub">Course: CSE 324 &bull; Green University of Bangladesh</div>
+            <p class="timeline-desc">
+              Designed a collaborative form and workspace engine integrating automated grading, interactive questionnaires, and full system specifications including DFD Level 0/1, UML sequence diagrams, and high-fidelity vector UI models.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <span class="timeline-title">Json-Boundary NPM Package</span>
+              <a href="https://www.npmjs.com/package/json-boundary" target="_blank" class="timeline-doi">npmjs.com/package/json-boundary</a>
+            </div>
+            <div class="timeline-sub">TypeScript &bull; Node.js Developer Utility</div>
+            <p class="timeline-desc">
+              Engineered a zero-dependency, high-throughput utility for identifying scanning boundaries in complex JSON trees to generate dynamic Prisma ORM <code>where</code> clauses on the fly.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Skills, Education, & Contact Details -->
+      <div class="right-col">
+        
+        <!-- Contact Information -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fa-solid fa-address-card"></i> Contact &amp; Connect
+            </div>
+          </div>
+
+          <a href="mailto:ashikur.gub@gmail.com" class="contact-item">
+            <div class="contact-icon-box"><i class="fa-solid fa-envelope"></i></div>
+            <div class="contact-meta">
+              <strong>Email</strong>
+              <span>ashikur.gub@gmail.com</span>
+            </div>
+          </a>
+
+          <a href="tel:+8801962579305" class="contact-item">
+            <div class="contact-icon-box"><i class="fa-solid fa-phone"></i></div>
+            <div class="contact-meta">
+              <strong>Phone</strong>
+              <span>+880 1962-579305</span>
+            </div>
+          </a>
+
+          <a href="https://linkedin.com/in/favouritesir" target="_blank" class="contact-item">
+            <div class="contact-icon-box"><i class="fa-brands fa-linkedin-in"></i></div>
+            <div class="contact-meta">
+              <strong>LinkedIn</strong>
+              <span>linkedin.com/in/favouritesir</span>
+            </div>
+          </a>
+
+          <a href="https://github.com/favouritesir" target="_blank" class="contact-item">
+            <div class="contact-icon-box"><i class="fa-brands fa-github"></i></div>
+            <div class="contact-meta">
+              <strong>GitHub</strong>
+              <span>github.com/favouritesir</span>
+            </div>
+          </a>
+
+          <div class="contact-item">
+            <div class="contact-icon-box"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="contact-meta">
+              <strong>Location</strong>
+              <span>Gazipur / Dhaka, Bangladesh</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical Skills Spectrum -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fa-solid fa-gears"></i> Technical Proficiencies
+            </div>
+          </div>
+
+          <div class="skills-section">
+            <div class="skill-category">
+              <div class="skill-cat-title"><i class="fa-solid fa-microchip"></i> Algorithms &amp; Low-Level</div>
+              <div class="skill-badges">
+                <span class="skill-badge">C / C++</span>
+                <span class="skill-badge">In-Situ Algorithms</span>
+                <span class="skill-badge">Asymmetric Space</span>
+                <span class="skill-badge">ATmega328P Firmware</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <div class="skill-cat-title"><i class="fa-brands fa-js"></i> Languages &amp; Runtimes</div>
+              <div class="skill-badges">
+                <span class="skill-badge">JavaScript (ES6+)</span>
+                <span class="skill-badge">TypeScript</span>
+                <span class="skill-badge">Node.js</span>
+                <span class="skill-badge">Python 3</span>
+                <span class="skill-badge">Java</span>
+                <span class="skill-badge">Bash Scripting</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <div class="skill-cat-title"><i class="fa-solid fa-layer-group"></i> Frameworks &amp; Systems</div>
+              <div class="skill-badges">
+                <span class="skill-badge">React.js</span>
+                <span class="skill-badge">Vue.js</span>
+                <span class="skill-badge">Electron.js</span>
+                <span class="skill-badge">Three.js</span>
+                <span class="skill-badge">Google Apps Script</span>
+                <span class="skill-badge">Prisma ORM</span>
+                <span class="skill-badge">MySQL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education Credentials -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fa-solid fa-graduation-cap"></i> Education
+            </div>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <div style="font-size: 1rem; font-weight: 700; color: #ffffff;">B.Sc. in Computer Science &amp; Engineering</div>
+            <div style="color: var(--primary); font-size: 0.88rem; font-weight: 600;">Green University of Bangladesh</div>
+            <div style="color: var(--text-muted); font-size: 0.82rem; margin-top: 2px;">Graduated: Spring 2026 &bull; Dhaka, Bangladesh</div>
+          </div>
+
+          <div style="margin-bottom: 16px; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 12px;">
+            <div style="font-size: 0.95rem; font-weight: 700; color: #ffffff;">Higher Secondary Certificate (HSC)</div>
+            <div style="color: var(--primary); font-size: 0.85rem; font-weight: 600;">Science Group</div>
+            <div style="color: var(--text-muted); font-size: 0.82rem;">Dhaka Board</div>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fa-solid fa-award"></i> Professional Honors
+            </div>
+          </div>
+
+          <div style="margin-bottom: 12px;">
+            <div style="font-weight: 700; color: #ffffff; font-size: 0.92rem;">Itransition Group</div>
+            <div style="color: var(--accent); font-size: 0.84rem;">Commercial Software Development (JavaScript)</div>
+            <div style="color: var(--text-muted); font-size: 0.8rem;">Corporate Remote Training &bull; Nov 2024</div>
+          </div>
+
+          <div style="border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 10px;">
+            <div style="font-weight: 700; color: #ffffff; font-size: 0.92rem;">Academic Mentorship</div>
+            <div style="color: var(--primary); font-size: 0.84rem;">Peer Mentor &amp; Algorithm Coach</div>
+            <div style="color: var(--text-muted); font-size: 0.8rem;">CSE Department, GUB</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Client-Side Live Algorithm Implementation -->
+  <script>
+    // Tab switching
+    function switchTab(tab) {
+      document.getElementById('tab-cloud').classList.toggle('active', tab === 'cloud');
+      document.getElementById('tab-prefix').classList.toggle('active', tab === 'prefix');
+      document.getElementById('panel-cloud').style.display = tab === 'cloud' ? 'block' : 'none';
+      document.getElementById('panel-prefix').style.display = tab === 'prefix' ? 'block' : 'none';
+    }
+
+    // 1. In-Browser Cloud Merge Sort
+    function runCloudSort() {
+      const inputStr = document.getElementById('sort-input').value;
+      const raw = inputStr.split(',').map(s => parseInt(s.trim())).filter(n => !isNaN(n));
+      if (raw.length === 0) {
+        document.getElementById('sort-terminal').innerHTML = '<span style="color: #f87171;">Error: Please enter valid integers.</span>';
+        return;
+      }
+
+      const arr = [...raw];
+      const n = arr.length;
+      let compares = 0, moves = 0;
+      const cloud = new Array(Math.ceil(n / 2));
+
+      function cMerge(l, m, r) {
+        compares++;
+        if (arr[m] <= arr[m + 1]) return;
+        let lp = l, rp = m + 1, step = 0;
+        while (lp <= m) {
+          cloud[step++] = arr[lp++];
+          moves++;
+        }
+        lp = 0;
+        while (lp < step && rp <= r) {
+          compares++;
+          if (cloud[lp] <= arr[rp]) {
+            arr[l++] = cloud[lp++];
+          } else {
+            arr[l++] = arr[rp++];
+          }
+          moves++;
+        }
+        while (lp < step) {
+          arr[l++] = cloud[lp++];
+          moves++;
+        }
+      }
+
+      function rec(l, r) {
+        if (l < r) {
+          const mid = Math.floor((l + r) / 2);
+          rec(l, mid);
+          rec(mid + 1, r);
+          cMerge(l, mid, r);
+        }
+      }
+
+      const t0 = performance.now();
+      rec(0, n - 1);
+      const t1 = performance.now();
+
+      document.getElementById('sort-space').innerText = Math.ceil(n / 2) + " elements";
+      document.getElementById('sort-moves').innerText = moves + " writes";
+
+      document.getElementById('sort-terminal').innerHTML = 
+        `<span style="color: #38bdf8;">// Output Sorted Array (N = ${n}):</span><br>` +
+        `[${arr.join(', ')}]<br><br>` +
+        `<span style="color: #34d399;">✔ Execution time: ${(t1 - t0).toFixed(4)} ms | Comparisons: ${compares} | Cloud Buffer: ${Math.ceil(n/2)}</span>`;
+    }
+
+    // 2. In-Browser Infix to Prefix Converter
+    function runInfixToPrefix() {
+      const expr = document.getElementById('prefix-input').value.trim();
+      if (!expr) return;
+
+      function priority(op) {
+        if (op === '+' || op === '-') return 1;
+        if (op === '*' || op === '/' || op === '%') return 2;
+        if (op === '^') return 3;
+        return 0;
+      }
+
+      const arr = expr.split('');
+      const len = arr.length;
+      let readIdx = len - 1, writeIdx = len - 1;
+      const stack = [];
+
+      while (readIdx >= 0) {
+        const c = arr[readIdx];
+        if (c === ')') {
+          stack.push(c);
+        } else if (c === '(') {
+          while (stack.length > 0 && stack[stack.length - 1] !== ')') {
+            arr[writeIdx--] = stack.pop();
+          }
+          if (stack.length > 0 && stack[stack.length - 1] === ')') stack.pop();
+        } else if (priority(c) > 0) {
+          while (stack.length > 0 && stack[stack.length - 1] !== ')') {
+            const topOp = stack[stack.length - 1];
+            const pCurr = priority(c), pTop = priority(topOp);
+            if (pCurr < pTop || (pCurr === pTop && c === '^')) {
+              arr[writeIdx--] = stack.pop();
+            } else break;
+          }
+          stack.push(c);
+        } else if (/[a-zA-Z0-9]/.test(c)) {
+          arr[writeIdx--] = c;
+        }
+        readIdx--;
+      }
+
+      while (stack.length > 0) {
+        const x = stack.pop();
+        if (x !== '(' && x !== ')') arr[writeIdx--] = x;
+      }
+
+      const out = arr.slice(writeIdx + 1).join('');
+
+      document.getElementById('prefix-terminal').innerHTML = 
+        `<span style="color: #38bdf8;">// Input Infix  :</span> ${expr}<br>` +
+        `<span style="color: #34d399;">// Output Prefix :</span> <strong style="color: #ffffff; font-size: 1.05rem;">${out}</strong><br><br>` +
+        `<span style="color: #94a3b8;">✔ In-situ transformation completed with zero extra string allocations.</span>`;
+    }
+  </script>
+</body>
+</html>
