@@ -176,7 +176,7 @@ def build_cv():
     run_r1_title.font.bold = True
     add_hyperlink(p_r1, "https://doi.org/10.5281/zenodo.23665548", "DOI: 10.5281/zenodo.23665548", bold=True)
     p_r1.add_run("  •  ")
-    add_hyperlink(p_r1, "https://github.com/favouritesir/created_by_me/tree/main/%E2%9C%85%20cloud%20merge%20sort", "GitHub Benchmarks")
+    add_hyperlink(p_r1, "https://github.com/favouritesir/my-innovations/tree/main/%E2%9C%85%20cloud%20merge%20sort", "GitHub Benchmarks")
 
     p_r1_desc = doc.add_paragraph()
     p_r1_desc.paragraph_format.space_before = Pt(0)
@@ -198,7 +198,7 @@ def build_cv():
     run_r2_title.font.bold = True
     add_hyperlink(p_r2, "https://doi.org/10.5281/zenodo.23657544", "DOI: 10.5281/zenodo.23657544", bold=True)
     p_r2.add_run("  •  ")
-    add_hyperlink(p_r2, "https://github.com/favouritesir/created_by_me/tree/main/%E2%9C%85%20infix%20to%20prefix", "GitHub Source")
+    add_hyperlink(p_r2, "https://github.com/favouritesir/my-innovations/tree/main/%E2%9C%85%20infix%20to%20prefix", "GitHub Source")
 
     p_r2_desc = doc.add_paragraph()
     p_r2_desc.paragraph_format.space_before = Pt(0)
